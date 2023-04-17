@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.oe_sc_boolean
+    - node.type.oe_sc_event
+id: node.oe_sc_event.oe_sc_boolean
+field_name: oe_sc_boolean
+entity_type: node
+bundle: oe_sc_event
+label: 'Is online'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Online
+  off_label: 'On location'
+field_type: boolean

@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Field ERA Address template (wrapper <div> are <span>).
+ */
+#}
+{%
+  set classes = [
+  bundle|clean_class ~ '__' ~ field_name_clean|clean_class,
+  label_display == 'inline' ? 'd-flex',
+]
+%}
+{% set is_div_wrapped =
+  (element['#bundle'] != 'era_board_meeting' and element['#view_mode'] != 'search_result' )
+%}
+
+{%
+  set title_classes = [
+  'field__label',
+  'bcl-heading',
+  label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
+{% if is_div_wrapped %}
+  <div{{ attributes.addClass(classes|merge(['my-4 text-muted me-3'])) }}>
+{% endif %}
+    {% if not label_hidden %}
+      <b>{{ label }}{% if label_display == 'inline' %}<span class="me-1">:</span>{% endif %}</b>
+    {% endif %}
+    {% for item in items %}
+      <span{{ item.attributes.addClass('field__item') }}>{{ item.content }}</span>
+    {% endfor %}
+{% if is_div_wrapped %}
+</div>
+{% endif %}
